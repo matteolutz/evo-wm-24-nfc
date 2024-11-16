@@ -16,11 +16,14 @@ SENSOR_ID = args.id
 pn532 = Pn532_i2c()
 pn532.SAMconfigure()
 
+print("[EVO] Waiting for NFC card...")
+
 while True:
     card_data = pn532.read_mifare().get_data()
+    print("[EVO] NFC Tag present, sending request...")
     try:
         requests.post(API_URL, json={'id': SENSOR_ID, 'tag': card_data})
     except:
-        pass
+        print("[EVO] Failed to send request")
 
 print(card_data)
