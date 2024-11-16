@@ -1,1 +1,3 @@
 py532lib
+requests
+argparse
