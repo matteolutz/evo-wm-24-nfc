@@ -1,2 +1,1 @@
-adafruit-circuitpython-busdevice
-adafruit-circuitpython-pn532
+py532lib
