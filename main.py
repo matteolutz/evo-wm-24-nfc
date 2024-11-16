@@ -23,7 +23,7 @@ while True:
     print("[EVO] NFC Tag present, sending request...")
     try:
         requests.post(API_URL, json={'id': SENSOR_ID, 'tag': card_data})
-    except:
-        print("[EVO] Failed to send request")
+    except Exception as e:
+        print(f"[EVO] Failed to send request ({e})")
 
 print(card_data)
