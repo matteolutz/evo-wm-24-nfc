@@ -22,7 +22,7 @@ while True:
     card_data = pn532.read_mifare().get_data()
     print("[EVO] NFC Tag present, sending request...")
     try:
-        requests.post(API_URL, json={'id': SENSOR_ID, 'tag': card_data.encode('utf-8')})
+        requests.post(API_URL, json={'id': SENSOR_ID, 'tag': card_data.decode('utf-8')})
     except Exception as e:
         print(f"[EVO] Failed to send request ({e})")
 
