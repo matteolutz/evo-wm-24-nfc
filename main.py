@@ -29,16 +29,10 @@ i2c = busio.I2C(board.SCL, board.SDA)
 # Non-hardware
 # pn532 = PN532_I2C(i2c, debug=False)
 
-# With I2C, we recommend connecting RSTPD_N (reset) to a digital pin for manual
-# harware reset
-reset_pin = DigitalInOut(board.D6)
-# On Raspberry Pi, you must also connect a pin to P32 "H_Request" for hardware
-# wakeup! this means we don't need to do the I2C clock-stretch thing
-req_pin = DigitalInOut(board.D12)
 # Using the IRQ pin allows us to determine when a card is present by checking
 # to see if the pin is pulled low.
 irq_pin = DigitalInOut(board.D10)
-pn532 = PN532_I2C(i2c, debug=False, reset=reset_pin, req=req_pin, irq=irq_pin)
+pn532 = PN532_I2C(i2c, debug=False, irq=irq_pin)
 
 # SPI connection:
 # spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
